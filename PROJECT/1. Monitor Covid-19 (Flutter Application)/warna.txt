@@ -1,0 +1,7 @@
+warna
+202C44
+99A6C0
+67C57B
+
+gradient
+EEF1F9

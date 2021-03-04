@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-
+fit=no">
+
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Doctor Consultation</title>
+<!-- Custom fonts for this template-->
+<link href="css/sb-admin-2.min.css" rel="stylesheet">
+<link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/dashboard.css">
+  
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,6
+00i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<!-- Custom styles for this template-->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+<script
+	src="https://www.gstatic.com/firebasejs/7.15.0/firebase-
+database.js"></script>
+
+<script
+	src="https://www.gstatic.com/firebasejs/7.15.0/firebase-
+firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script
+	src="https://www.gstatic.com/firebasejs/7.15.0/firebase-
+analytics.js"></script>
+
+<script>
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey : "AIzaSyC-QK0r4ZYH6FyBcDeqjoi5nj_pICRkTZA",
+		authDomain : "mdanisetiawan4sc5.firebaseapp.com",
+		databaseURL : "https://mdanisetiawan4sc5.firebaseio.com",
+		projectId : "mdanisetiawan4sc5",
+		storageBucket : "mdanisetiawan4sc5.appspot.com",
+		messagingSenderId : "713261631951",
+		appId : "1:713261631951:web:40d3cb347dd668e33eaaba",
+		measurementId : "G-NH0QCT0VF8"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	firebase.analytics();
+</script>
+</head>
+<body id="page-top">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul
+			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			id="accordionSidebar">
+			<!-- Sidebar - Brand -->
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="table_dashboard.html">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-heartbeat"></i>
+				</div>
+				<div class="sidebar-brand-text mx-2">Doctor Consultation</div>
+			</a>
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item"><a class="nav-link" href="table_dashboard.html">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
+			</a></li>
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+			<!-- Heading -->
+			<div class="sidebar-heading">Menu</div>
+			<!-- Nav Item - Charts -->
+			<li class="nav-item"><a class="nav-link" href="table_doctor.html">
+					<i class="fas fa-medkit"></i> <span>Doctor</span>
+			</a></li>
+			<!-- Nav Item - Tables -->
+		
+		</ul>
+		<!-- End of Sidebar -->
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Main Content -->
+			<div id="content">
+				<!-- Topbar -->
+				<nav
+					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top
+shadow">
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop"
+						class="btn btn-link d-md-none rounded-circle
+mr-3">
+						<i class="fa fa-bars"></i>
+					</button>
+					<!-- Topbar Navbar -->
+					<ul class="navbar-nav ml-auto">
+						<div class="topbar-divider d-none d-sm-block"></div>
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <span
+								class="mr-2 d-none d-lg-inline text-gray-600
+small">Administrator</span>
+								<img class="img-profile rounded-circle"
+								src="img/user64.svg">
+						</a> <!-- Dropdown - User Information -->
+							<div
+								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+								aria-labelledby="userDropdown">
+								
+								
+
+								<a class="dropdown-item" href="index.html" data-toggle="index.html" data-
+									target="#logoutModal"> <i
+									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Logout
+								</a>
+							</div></li>
+					</ul>
+				</nav>
+				<!-- End of Topbar -->
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<!-- Page Heading -->
+					<h1 class="h3 mb-4 text-gray-800">
+						Doctor Consultation  <a href="add_doctor.html" class="btn
+btn-success btn-user">Add Doctor</a>
+					</h1>
+					<hr />
+					<form class="user">
+						<div class="form-group">
+							<input type="text" class="form-control" id="uid" placeholder="ID"
+								readonly>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="doctorname"
+								placeholder="Doctor name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="doctorspecialist"
+								placeholder="Doctor Specialits">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="doctorphonenumber"
+								placeholder="Doctor Phonenumber">
+						</div>
+						<div class="form-group">
+							<select id="doctormonth" class="form-control">
+								<option value="">Month</option>
+								<option value="Jan">January</option>
+								<option value="Feb">February</option>
+								<option value="Mar">March</option>
+								<option value="Apr">April</option>
+								<option value="May">May</option>
+								<option value="Jun">June</option>
+								<option value="Jul">July</option>
+								<option value="Aug">August</option>
+								<option value="Sep">September</option>
+								<option value="Oct">October</option>
+								<option value="Nov">November</option>
+								<option value="Dec">December</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<select id="doctordate" class="form-control">
+								<option value="">Day</option>
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+								<option value="04">04</option>
+								<option value="05">05</option>
+								<option value="06">06</option>
+								<option value="07">07</option>
+								<option value="08">08</option>
+								<option value="09">09</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+								<option value="24">24</option>
+								<option value="25">25</option>
+								<option value="26">26</option>
+								<option value="27">27</option>
+								<option value="28">28</option>
+								<option value="29">29</option>
+								<option value="30">30</option>
+								<option value="31">31</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<select id="doctorfirsttime" class="form-control">
+								<option value="">Doctor First Time</option>
+								<option value="01.00 AM">01.00 AM</option>
+								<option value="02.00 AM">02.00 AM</option>
+								<option value="03.00 AM">03.00 AM</option>
+								<option value="04.00 AM">04.00 AM</option>
+								<option value="05.00 AM">05.00 AM</option>
+								<option value="06.00 AM">06.00 AM</option>
+								<option value="07.00 AM">07.00 AM</option>
+								<option value="08.00 AM">08.00 AM</option>
+								<option value="09.00 AM">09.00 AM</option>
+								<option value="10.00 AM">10.00 AM</option>
+								<option value="11.00 AM">11.00 AM</option>
+								<option value="12.00 AM">12.00 AM</option>
+								<option value="01.00 PM">01.00 PM</option>
+								<option value="02.00 PM">02.00 PM</option>
+								<option value="03.00 PM">03.00 PM</option>
+								<option value="04.00 PM">04.00 PM</option>
+								<option value="05.00 PM">05.00 PM</option>
+								<option value="06.00 PM">06.00 PM</option>
+								<option value="07.00 PM">07.00 PM</option>
+								<option value="08.00 PM">08.00 PM</option>
+								<option value="09.00 PM">09.00 PM</option>
+								<option value="10.00 PM">10.00 PM</option>
+								<option value="11.00 PM">11.00 PM</option>
+								<option value="12.00 PM">12.00 PM</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<select id="doctorsecondtime" class="form-control">
+								<option value="">Doctor Second Time</option>
+								<option value="01.00 AM">01.00 AM</option>
+								<option value="02.00 AM">02.00 AM</option>
+								<option value="03.00 AM">03.00 AM</option>
+								<option value="04.00 AM">04.00 AM</option>
+								<option value="05.00 AM">05.00 AM</option>
+								<option value="06.00 AM">06.00 AM</option>
+								<option value="07.00 AM">07.00 AM</option>
+								<option value="08.00 AM">08.00 AM</option>
+								<option value="09.00 AM">09.00 AM</option>
+								<option value="10.00 AM">10.00 AM</option>
+								<option value="11.00 AM">11.00 AM</option>
+								<option value="12.00 AM">12.00 AM</option>
+								<option value="01.00 PM">01.00 PM</option>
+								<option value="02.00 PM">02.00 PM</option>
+								<option value="03.00 PM">03.00 PM</option>
+								<option value="04.00 PM">04.00 PM</option>
+								<option value="05.00 PM">05.00 PM</option>
+								<option value="06.00 PM">06.00 PM</option>
+								<option value="07.00 PM">07.00 PM</option>
+								<option value="08.00 PM">08.00 PM</option>
+								<option value="09.00 PM">09.00 PM</option>
+								<option value="10.00 PM">10.00 PM</option>
+								<option value="11.00 PM">11.00 PM</option>
+								<option value="12.00 PM">12.00 PM</option>
+							</select>
+						</div>
+						<div class="form-group">
+
+							<textarea rows="4" cols="50" name="comment" class="form-control"
+								id="doctorabout" placeholder="Enter text about here..."></textarea>
+						</div>
+						<input type="button" value="Update" onclick="update_user();"
+							class="btn btn-warning btn-user" /> <input type="button"
+							value="Delete" onclick="delete_user();"
+							class="btn btn-danger btn-user" />
+						<hr>
+					</form>
+
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Information</h6>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table id="tb_doctor" class="table table-bordered" width="100%"
+									cellspacing="0">
+
+									<tr>
+										<td>#ID</td>
+										<td>Doctor Name</td>
+										<td>Doctor Specialist</td>
+										<td>Doctor Phonenumber</td>
+										<td>Doctor Month</td>
+										<td>Doctor Date</td>
+										<td>Doctor First Time</td>
+										<td>Doctor Second Time</td>
+										<td>Doctor About</td>
+									</tr>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- End of Main Content -->
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Doctor Consultation 2020</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+		</div>
+		<!-- End of Content Wrapper -->
+	</div>
+	<!-- End of Page Wrapper -->
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+	<!-- Logout Modal-->
+
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria- labelledby="exampleModalLabel" aria-hidden="true">
+
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+
+					<button class="close" type="button" data-dismiss="modal" aria-
+						label="Close">
+
+						<span aria-hidden="true">�</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready
+					to end your current session.</div>
+				<div class="modal-footer">
+
+					<button class="btn btn-secondary" type="button" data-
+						dismiss="modal">Cancel</button>
+
+					<a class="btn btn-primary" href="login.html">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap core JavaScript-->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script>
+		var tbDosen = document.getElementById('tb_doctor');
+		var databaseRef = firebase.database().ref('doctorconsultation/');
+		var rowIndex = 1;
+		databaseRef.once('value', function(snapshot) {
+			snapshot.forEach(function(childSnapshot) {
+				var childKey = childSnapshot.key;
+				var childData = childSnapshot.val();
+				var row = tbDosen.insertRow(rowIndex);
+				
+				var cellId = row.insertCell(0);
+				var cellDoctorname = row.insertCell(1);
+				var cellDoctorspecialist = row.insertCell(2);
+				var cellDoctorphonenumber = row.insertCell(3);
+				var cellDoctormonth = row.insertCell(4);
+				var cellDoctordate = row.insertCell(5);
+				var cellDoctorfirsttime = row.insertCell(6);
+				var cellDoctorsecondtime = row.insertCell(7);
+				var cellDoctorabout = row.insertCell(8);
+			
+				
+				cellId.appendChild(document.createTextNode(childKey));
+				cellDoctorname.appendChild(document.createTextNode(childData.doctorname));
+				cellDoctorspecialist.appendChild(document.createTextNode(childData.doctorspecialist));
+				cellDoctorphonenumber.appendChild(document.createTextNode(childData.doctorphonenumber));
+				cellDoctormonth.appendChild(document.createTextNode(childData.doctormonth));
+				cellDoctordate.appendChild(document.createTextNode(childData.doctordate));
+				cellDoctorfirsttime.appendChild(document.createTextNode(childData.doctorfirsttime));
+				cellDoctorsecondtime.appendChild(document.createTextNode(childData.doctorsecondtime));
+				cellDoctorabout.appendChild(document.createTextNode(childData.doctorabout));
+				
+				rowIndex = rowIndex + 1;
+			});
+			var table = document.getElementById("tb_doctor");
+			var rows = table.getElementsByTagName("tr");
+			for (i = 0; i < rows.length; i++) {
+				var currentRow = table.rows[i];
+				var createClickHandler = function(row) {
+					return function() {
+						var cell1 = row.getElementsByTagName("td")[0];
+						var cell2 = row.getElementsByTagName("td")[1];
+						var cell3 = row.getElementsByTagName("td")[2];
+						var cell4 = row.getElementsByTagName("td")[3];
+						var cell5 = row.getElementsByTagName("td")[4];
+						var cell6 = row.getElementsByTagName("td")[5];
+						var cell7 = row.getElementsByTagName("td")[6];
+						var cell8 = row.getElementsByTagName("td")[7];
+						var cell9 = row.getElementsByTagName("td")[8];
+						
+						var id = cell1.innerHTML;
+						var doctorname = cell2.innerHTML;
+						var doctorspecialist = cell3.innerHTML;
+						var doctorphonenumber = cell4.innerHTML;
+						var doctormonth = cell5.innerHTML;
+						var doctordate = cell6.innerHTML;
+						var doctorfirsttime = cell7.innerHTML;
+						var doctorsecondtime = cell8.innerHTML;
+						var doctorabout = cell9.innerHTML;
+						
+						
+						document.getElementById('uid').value = id;
+						document.getElementById('doctorname').value = doctorname;
+						document.getElementById('doctorspecialist').value = doctorspecialist;
+						document.getElementById('doctorphonenumber').value = doctorphonenumber;
+						document.getElementById('doctormonth').value = doctormonth;
+						document.getElementById('doctordate').value = doctordate;
+						document.getElementById('doctorfirsttime').value = doctorfirsttime;
+						document.getElementById('doctorsecondtime').value = doctorsecondtime;
+						document.getElementById('doctorabout').value = doctorabout;
+					};
+				};
+				currentRow.onclick = createClickHandler(currentRow);
+			}
+		});
+		function update_user() {
+			var uid = document.getElementById('uid').value;
+			var doctorname = document.getElementById('doctorname').value;
+			var doctorspecialist = document.getElementById('doctorspecialist').value;
+			var doctorphonenumber = document.getElementById('doctorphonenumber').value;
+			var doctormonth = document.getElementById('doctormonth').value;
+			var doctordate = document.getElementById('doctordate').value;
+			var doctorfirsttime = document.getElementById('doctorfirsttime').value;
+			var doctorsecondtime = document.getElementById('doctorsecondtime').value;
+			var doctorabout = document.getElementById('doctorabout').value;
+			var data = {
+					doctorname : doctorname,
+					doctorspecialist : doctorspecialist,
+					doctorphonenumber : doctorphonenumber,
+					doctormonth : doctormonth,
+					doctordate : doctordate,
+					doctorfirsttime : doctorfirsttime,
+					doctorsecondtime : doctorsecondtime,
+					doctorabout : doctorabout,
+				
+			}
+			var updates = {};
+			updates['/doctorconsultation/' + uid] = data;
+			firebase.database().ref().update(updates);
+			alert('Doctor updated successfully!');
+			reload_page();
+		}
+		function delete_user() {
+			var uid = document.getElementById('uid').value;
+			firebase.database().ref().child('/doctorconsultation/' + uid).remove();
+			alert('Doctor deleted successfully!');
+			reload_page();
+		}
+		function reload_page() {
+			window.location.reload();
+		}
+	</script>
+</body>
+</html>
